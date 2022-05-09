@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qvat6u8xwog56rqqOaB8GqwfNS5NH6Se2sUsiDt5l1HV5PrZFH9J9EPAzwPOXkQa6YUGNV8Uw+5srR08p9FrhA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\HONOR\\RiderProjects\\Game\\Game\\Game.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\HONOR\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\HONOR\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

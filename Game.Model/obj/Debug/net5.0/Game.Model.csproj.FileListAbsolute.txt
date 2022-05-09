@@ -1,0 +1,12 @@
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\Game.Model.csproj.AssemblyReference.cache
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\Game.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\Game.Model.AssemblyInfoInputs.cache
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\Game.Model.AssemblyInfo.cs
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\Game.Model.csproj.CoreCompileInputs.cache
+C:\Users\HONOR\RiderProjects\Game\Game.Model\bin\Debug\net5.0\Game.Model.deps.json
+C:\Users\HONOR\RiderProjects\Game\Game.Model\bin\Debug\net5.0\Game.Model.dll
+C:\Users\HONOR\RiderProjects\Game\Game.Model\bin\Debug\net5.0\ref\Game.Model.dll
+C:\Users\HONOR\RiderProjects\Game\Game.Model\bin\Debug\net5.0\Game.Model.pdb
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\Game.Model.dll
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\ref\Game.Model.dll
+C:\Users\HONOR\RiderProjects\Game\Game.Model\obj\Debug\net5.0\Game.Model.pdb
