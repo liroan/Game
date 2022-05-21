@@ -22,6 +22,7 @@ namespace Game
             SetStyle(ControlStyles.OptimizedDoubleBuffer | 
                      ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
             Timer timer = new Timer();
+            KeyDown += new KeyEventHandler(Form1_KeyDown);
             timer.Tick += new EventHandler(OnTimer);
             timer.Interval = 50;
             timer.Start(); 
@@ -59,6 +60,55 @@ namespace Game
             var botView = new BotView(bot);
             bot.Path = Paths[road];
             bots.Add(Tuple.Create<Bot, BotView>(bot, botView));
+            Invalidate();
+        }
+        
+        void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                {
+                    var x = (int) Math.Round(player.X);
+                    var y = (int)Math.Round(player.Y) - 1;
+                    if (gameField.IsCanRearrange(x, y, player.CurrentRoad))
+                    {
+                        player.SwapPath(x, y, Direction.Up, gameField);
+                    }
+                    break;
+                }
+                case Keys.Down:
+                {
+                    var x = (int) Math.Round(player.X);
+                    var y = (int)Math.Round(player.Y) + 1;
+                    if (gameField.IsCanRearrange(x, y, player.CurrentRoad))
+                    {
+                        player.SwapPath(x, y, Direction.Down, gameField);
+                    }
+                    break;
+                }
+                case Keys.Right:
+                {
+                    var x = (int)Math.Round(player.X) + 1;
+                    var y = (int)Math.Round(player.Y);
+                    if (gameField.IsCanRearrange(x, y, player.CurrentRoad))
+                    {
+                        player.SwapPath(x, y, Direction.Right, gameField);
+                    }
+                    break;
+                }
+                case Keys.Left:
+                {
+                    var x = (int)Math.Round(player.X) - 1;
+                    var y = (int)Math.Round(player.Y);
+                    if (gameField.IsCanRearrange(x, y, player.CurrentRoad))
+                    {
+                        player.SwapPath(x, y, Direction.Left, gameField);
+                    }
+                    break;
+                }
+                    
+            }
             Invalidate();
         }
         
