@@ -15,7 +15,6 @@ namespace Game
         private readonly PlayerView playerView;
         private readonly List<List<Vector>> Paths = new List<List<Vector>>();
         
-        //private readonly BotView botView;
         public Form1()
         {
             InitializeComponent();
@@ -30,14 +29,10 @@ namespace Game
             timer2.Tick += new EventHandler(OnTimer2);
             timer2.Interval = 2000;
             timer2.Start();
-            //Paths.Add(gameField.BuildPath(new Vector(24, 0), 0, 15, 1));
             Paths.Add(gameField.BuildPath(new Vector(24, 0), 1, 14, 1));
             Paths.Add(gameField.BuildPath(new Vector(23, 0), 0, 14, 2));
             playerView = new PlayerView(player);
-            //bots.Add(new Bot(23, 0, Direction.Up, 2, 0.5));
-            //botView = new BotView(bots[0]);
             player.Path = gameField.BuildPath(new Vector((int)player.X, (int)player.Y), 24 + 1 - player.CurrentRoad, 0, 1);
-            //bots[0].Path = gameField.BuildPath(new Vector((int)bots[0].X, (int)bots[0].Y), 0, 14, 2);
         }
         
         void OnTimer(object sender, EventArgs e)
@@ -47,7 +42,6 @@ namespace Game
             {
                 CheckNextMove(bot);
             }
-            /*bots[0].CheckNextMove();*/
             Invalidate();
         }
 
@@ -65,8 +59,6 @@ namespace Game
             var botView = new BotView(bot);
             bot.Path = Paths[road];
             bots.Add(Tuple.Create<Bot, BotView>(bot, botView));
-            /*bots.Add(new Bot(23, 0, Direction.Up, 1, 0.2));
-            botView = new BotView(bots[0]);*/
             Invalidate();
         }
         
