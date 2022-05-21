@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Game.Model;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Game
 {
@@ -48,7 +50,12 @@ namespace Game
 
         void CheckNextMove(Tuple<Bot, BotView> bot)
         {
-            var task = new Task(() => bot.Item1.CheckNextMove());
+            var task = new Task(() =>
+            {
+                if (bot.Item1.CheckCollision(player))
+                    Application.Exit();
+                bot.Item1.CheckNextMove();
+            });
             task.Start();
         }
         
@@ -169,7 +176,7 @@ namespace Game
     }
     public class PlayerView:PersonView<Player>
     {
-        public PlayerView(Player person, string nameImg = "pngwing"): base(person, nameImg)
+        public PlayerView(Player person, string nameImg = "bot"): base(person, nameImg)
         {
             this.person = person;
         }
