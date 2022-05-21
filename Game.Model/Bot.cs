@@ -17,12 +17,5 @@ namespace Game.Model
         }
     }
     
-    public class BotView:PersonView<Bot>
-    {
-        public BotView(Bot person, string nameImg="bot"): base(person, nameImg)
-        {
-            this.person = person;
-        }
-        
-    }
+    
 }

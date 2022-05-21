@@ -89,4 +89,39 @@ namespace Game
             }
         }
     }
+    public class PersonView<T> where T: IPerson
+    {
+        public T person;
+        public string nameImg;
+        public PersonView(T person, string nameImg)
+        {
+            this.person = person;
+            this.nameImg = nameImg;
+        }
+
+        public void View(Graphics g)
+        {
+            var numberImage = ((int)person.Dir).ToString();
+            Console.WriteLine("..\\Game\\img\\pngwing" + numberImage + ".png");
+            
+            Image newImage = Image.FromFile("../../../img/" + nameImg + numberImage + ".png");
+            g.DrawImage(newImage, new Rectangle((int)(person.X * person.Size),
+                (int)(person.Y * person.Size), person.Size, person.Size));
+        }
+    }
+    public class BotView:PersonView<Bot>
+    {
+        public BotView(Bot person, string nameImg="bot"): base(person, nameImg)
+        {
+            this.person = person;
+        }
+        
+    }
+    public class PlayerView:PersonView<Player>
+    {
+        public PlayerView(Player person, string nameImg = "pngwing"): base(person, nameImg)
+        {
+            this.person = person;
+        }
+    }
 }
