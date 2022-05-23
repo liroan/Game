@@ -6,13 +6,6 @@ namespace Game.Model
 {
     public class Player : Person
     {
-        /*public double X { get; set; }
-        public double Y { get; set; }
-        public readonly int Size = 50;
-        public Direction Dir { get; set; }
-        public int CurrentRoad { get; set; }
-        public List<Vector> Path { get; set; }
-        public int Step { get; set; }*/
         public Player(double x, double y, Direction direction): base(x, y, direction)
         {
             X = x;
