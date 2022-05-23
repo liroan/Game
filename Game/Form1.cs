@@ -176,7 +176,7 @@ namespace Game
     }
     public class PlayerView:PersonView<Player>
     {
-        public PlayerView(Player person, string nameImg = "bot"): base(person, nameImg)
+        public PlayerView(Player person, string nameImg = "pngwing"): base(person, nameImg)
         {
             this.person = person;
         }
