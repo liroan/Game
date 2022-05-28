@@ -11,7 +11,7 @@ namespace Game
 {
     public partial class Form1 : Form
     {
-        private readonly Player player = new Player(1, 9, Direction.Up);
+        private Player player = new Player(1, 9, Direction.Up);
         private List<Tuple<Bot, BotView>> bots = new List<Tuple<Bot, BotView>>();
         private readonly GameField gameField = new GameField();
         private readonly PlayerView playerView;
@@ -40,21 +40,35 @@ namespace Game
         
         void OnTimer(object sender, EventArgs e)
         {
-            player.CheckNextMove();
-            foreach (var bot in bots)
+            if (player != null && !player.IsArrived) 
+                player.CheckNextMove();
+            else
             {
-                CheckNextMove(bot);
+                player = null;
+            }
+
+            for (var i = 0; i < bots.Count; i++)
+            {
+                CheckNextMove(bots[i], i, bots);
             }
             Invalidate();
         }
 
-        void CheckNextMove(Tuple<Bot, BotView> bot)
+        void CheckNextMove(Tuple<Bot, BotView> bot, int i, List<Tuple<Bot, BotView>> bots)
         {
             var task = new Task(() =>
             {
-                if (bot.Item1.CheckCollision(player))
-                    Application.Exit();
-                bot.Item1.CheckNextMove();
+                if (bot != null && !bot.Item1.IsArrived)
+                {
+                    if (bot.Item1.CheckCollision(player))
+                        Application.Exit();
+                    bot.Item1.CheckNextMove();
+                }
+                else
+                {
+                    bots[i] = null;
+                    Console.WriteLine("lol");
+                }
             });
             task.Start();
         }
@@ -139,10 +153,12 @@ namespace Game
                     }
                 }
             }
-            playerView.View(g);
+            if (player != null)
+                playerView.View(g);
             foreach (var bot in bots)
             {
-                bot.Item2.View(g);
+                if (bot != null)
+                    bot.Item2.View(g);
             }
         }
     }

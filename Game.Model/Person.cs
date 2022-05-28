@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 
 using System.IO;
+using System.Net.Mime;
+using System.Threading;
 
 namespace Game.Model
 {
@@ -23,6 +25,7 @@ namespace Game.Model
         public List<Vector> Path { get; set; }
         public int Step { get; set; }
         public double Speed { get; set; }
+        public bool IsArrived { get; private set; }
         public Person(double x, double y, Direction direction, int road = 1, double speed = 0.2)
         {
             X = x;
@@ -36,7 +39,11 @@ namespace Game.Model
         
         public void CheckNextMove()
         {
-            if (Step == Path.Count) return;
+            if (Step == Path.Count)
+            {
+                IsArrived = true;
+                return;
+            }
             if (Y - Path[Step].Y > 0.05)
             {
                 MoveOnWay(Direction.Up);
@@ -92,6 +99,7 @@ namespace Game.Model
         {
             Move(dir, true, Speed);
         }
+        
     }
     
 }
