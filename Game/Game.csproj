@@ -10,4 +10,10 @@
       <ProjectReference Include="..\Game.Model\Game.Model.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="EndForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>

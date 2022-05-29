@@ -16,19 +16,19 @@ namespace Game
         private readonly GameField gameField = new GameField();
         private readonly PlayerView playerView;
         private readonly List<List<Vector>> Paths = new List<List<Vector>>();
-        
+        private Form form2 = new EndForm();
+        private Timer timer = new Timer();
+        private Timer timer2 = new Timer();
         public Form1()
         {
             InitializeComponent();
             Paint += new PaintEventHandler(Form1_Paint);
             SetStyle(ControlStyles.OptimizedDoubleBuffer | 
                      ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
-            Timer timer = new Timer();
             KeyDown += new KeyEventHandler(Form1_KeyDown);
             timer.Tick += new EventHandler(OnTimer);
             timer.Interval = 50;
-            timer.Start(); 
-            Timer timer2 = new Timer();
+            timer.Start();
             timer2.Tick += new EventHandler(OnTimer2);
             timer2.Interval = 2000;
             timer2.Start();
@@ -37,13 +37,24 @@ namespace Game
             playerView = new PlayerView(player);
             player.Path = gameField.BuildPath(new Vector((int)player.X, (int)player.Y), 24 + 1 - player.CurrentRoad, 0, 1);
         }
-        
+
+        void endGame()
+        {
+            Paint -= new PaintEventHandler(Form1_Paint);
+            KeyDown -= new KeyEventHandler(Form1_KeyDown);
+            timer.Tick -= new EventHandler(OnTimer);
+            timer2.Tick -= new EventHandler(OnTimer2);
+        }
         void OnTimer(object sender, EventArgs e)
         {
             if (player != null && !player.IsArrived) 
                 player.CheckNextMove();
             else
             {
+                form2.Show();
+                form2.Activate();
+                endGame();
+                Hide();
                 player = null;
             }
 
